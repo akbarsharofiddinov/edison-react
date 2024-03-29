@@ -9,5 +9,13 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
+    <script>
+      let tg = window.Telegram.WebApp;
+      tg.expand();
+
+      let chat_id = tg.initDataUnsafe.user.id;
+      console.log(chat_id)
+    </script>
   </body>
 </html>

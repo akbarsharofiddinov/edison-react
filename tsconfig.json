@@ -24,7 +24,11 @@
       "@/*": ["./src/*"],
       "@/components/*": ["./src/components/*"],
       "@/styles/*": ["./src/styles/*"]
-    }
+    },
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules/telegram-webapps-types"
+    ]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

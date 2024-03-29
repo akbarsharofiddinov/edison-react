@@ -18,7 +18,8 @@
     "react-spinners": "^0.13.8",
     "react-swiper": "^0.1.5",
     "sass": "^1.72.0",
-    "swiper": "^11.1.0"
+    "swiper": "^11.1.0",
+    "telegram-webapps-types": "^1.0.5"
   },
   "devDependencies": {
     "@types/node": "^20.11.30",

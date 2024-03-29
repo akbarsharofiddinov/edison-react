@@ -47,7 +47,7 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
     try {
       const response = await axios.post(`${baseURL}/api/orders`, dataObj);
       if (response.status === 200) {
-        alert("Заказ отправлен");
+        tg.close();
       }
     } catch (error) {
       console.log(error);

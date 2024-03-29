@@ -22,11 +22,6 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
   const [address, setAddress] = useState("");
   const [comment, setComment] = useState("");
 
-  let tg = window.Telegram.WebApp;
-  let chat_id = tg.initDataUnsafe.user.id;
-
-  console.log(tg)
-
   // Axios request
   async function getDeliveryCost() {
     try {
@@ -41,7 +36,7 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
 
   async function handleSubmit() {
     const dataObj: OrderDataObj = {
-      chat_id: chat_id,
+      chat_id: 0,
       address,
       comment,
       products: [...cartProducts],
@@ -49,7 +44,7 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
     try {
       const response = await axios.post(`${baseURL}/api/orders`, dataObj);
       if (response.status === 200) {
-        tg.close();
+        console.log(response.statusText);
       }
     } catch (error) {
       console.log(error);

@@ -139,6 +139,7 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
                     id="address-input"
                     autoComplete="off"
                     value={address}
+                    required
                     onChange={(e) => setAddress(e.target.value)}
                     disabled={cartProducts.length <= 0 ? true : false}
                   />
@@ -151,6 +152,7 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
                     rows={5}
                     autoComplete="off"
                     value={comment}
+                    required
                     onChange={(e) => setComment(e.target.value)}
                     disabled={cartProducts.length <= 0 ? true : false}
                   ></textarea>

@@ -1,6 +1,9 @@
+import { useEdisonContext } from "@/context/EdisonContext";
 import logoImg from "../images/logo.png";
 
 function Header() {
+  const { toggleModal } = useEdisonContext();
+
   return (
     <header className="header">
       <div className="container">
@@ -12,7 +15,9 @@ function Header() {
               <span>Restaurant Nukus</span>
             </div>
           </a>
-          <button className="feedbackBtn">Оставить отзыв</button>
+          <button className="feedbackBtn" onClick={toggleModal}>
+            Оставить отзыв
+          </button>
         </div>
       </div>
     </header>

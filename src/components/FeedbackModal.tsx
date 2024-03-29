@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
-const FeedbackModal = () => {
-  return (
-    <div>FeedbackModal</div>
-  )
-}
+const FeedbackModal: React.FC = () => {
+  return <div>FeedbackModal</div>;
+};
 
-export default FeedbackModal
+export default FeedbackModal;

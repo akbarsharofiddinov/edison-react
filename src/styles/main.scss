@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+// Components
+@import "./components/header";
+@import "./components/banner";
+@import "./components/searchInput";
+@import "./components/categories";
+@import "./components/products";
+@import "./components/footer";
+@import "./components/cart";
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  user-select: none;
+}
+
+/* font-family: "Lato", sans-serif; */
+
+html,
+body {
+  font-family: "Lato", sans-serif;
+  color: #333;
+}
+
+.container {
+  max-width: 380px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+main {
+  display: block;
+}
+
+main.hide {
+  display: none;
+}

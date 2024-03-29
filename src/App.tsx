@@ -10,8 +10,6 @@ function App() {
     },
   ]);
 
-  console.log("App");
-
   return (
     <EdisonContextProvider>
       <RouterProvider router={router} />

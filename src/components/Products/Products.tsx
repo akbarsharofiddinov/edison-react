@@ -92,7 +92,7 @@ const Products: React.FC = () => {
             justifyContent: "center",
             flexDirection: "column",
             textAlign: "center",
-            marginTop: 150,
+            marginTop: 50,
             fontSize: "50px",
             color: "#999",
           }}

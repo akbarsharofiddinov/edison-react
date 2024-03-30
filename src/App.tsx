@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import { EdisonContextProvider } from "./context/EdisonContext";
 import ErrorComponent from "./components/ErrorComponent";
+import { Header } from "./components";
 
 function App() {
   const router = createBrowserRouter([
@@ -17,6 +18,7 @@ function App() {
 
   return (
     <EdisonContextProvider>
+      <Header />
       <RouterProvider router={router} />
     </EdisonContextProvider>
   );

@@ -3,7 +3,6 @@ import {
   Cart,
   Categories,
   Footer,
-  Header,
   Products,
   SearchInput,
 } from "@/components";
@@ -32,7 +31,6 @@ function Home() {
           className="home-inner"
           style={isOpen ? { display: "none" } : { display: "block" }}
         >
-          <Header />
           <Banner />
           <SearchInput />
           <Categories />

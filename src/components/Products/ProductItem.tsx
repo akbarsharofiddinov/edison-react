@@ -20,14 +20,14 @@ export default function ProductItem({ productData }: ProductItemProps) {
       <div className="food-card">
         <img src={`${baseURL}/${productData.image_url}`} />
         <div className="food-card_body">
-          <h1 className="food-name">{productData.name}</h1>
-          <p className="food-price">{productData.price} сумм</p>
+          <div className="top">
+            <h1 className="food-name">{productData.name}</h1>
+            <p className="food-price">{productData.price} сумм</p>
+          </div>
           {quantity === 0 ? (
             <button
               className="add-toCart_Btn"
-              onClick={() =>
-                increaseCartQuantity(productData.id)
-              }
+              onClick={() => increaseCartQuantity(productData.id)}
             >
               + Добавить
             </button>
@@ -35,18 +35,14 @@ export default function ProductItem({ productData }: ProductItemProps) {
             <div className="counter-box">
               <button
                 className="minus"
-                onClick={() =>
-                  decreaseCartQuantity(productData.id)
-                }
+                onClick={() => decreaseCartQuantity(productData.id)}
               >
                 −
               </button>
               <p>{quantity}</p>
               <button
                 className="plus"
-                onClick={() =>
-                  increaseCartQuantity(productData.id)
-                }
+                onClick={() => increaseCartQuantity(productData.id)}
               >
                 +
               </button>

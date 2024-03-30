@@ -14,16 +14,16 @@ import { useNavigate } from "react-router-dom";
 function Home() {
   const { isOpen } = useEdisonContext();
 
-  function checkTheChatID() {
-    const navigate = useNavigate();
-    let tg = Telegram.WebApp;
+  const navigate = useNavigate();
+  let tg = Telegram.WebApp;
 
+  useEffect(() => {
     if (tg.initDataUnsafe.user?.id === undefined) {
       navigate("/error");
+    } else {
+      return
     }
-  }
-
-  useEffect(() => checkTheChatID(), []);
+  }, []);
 
   return (
     <section className="section-home">

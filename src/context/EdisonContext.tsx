@@ -19,6 +19,8 @@ type EdisonContextType = {
   isOpen: boolean;
   modal: boolean;
   toggleModal: () => void;
+  categoryId: number | null;
+  handleSetCategoryId: (value: number) => void;
 };
 
 // ============================================================
@@ -38,6 +40,7 @@ export function EdisonContextProvider({
 }: EdisonContextProviderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [modal, setModal] = useState(false);
+  const [categoryId, setCategoryId] = useState<number | null>(null);
   const [cartProducts, setCartProducts] = useState<CartProduct[]>([]);
   const [products, setProducts] = useState<IProduct[] | undefined>();
   const [totalSumm, setTotalSumm] = useState(0);
@@ -101,6 +104,10 @@ export function EdisonContextProvider({
     setProducts([...data]);
   }
 
+  function handleSetCategoryId(value: number) {
+    setCategoryId(value);
+  }
+
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
   const toggleModal = () => setModal((prev) => !prev);
@@ -123,6 +130,8 @@ export function EdisonContextProvider({
           isOpen,
           modal,
           toggleModal,
+          categoryId,
+          handleSetCategoryId,
         }}
       >
         {children}

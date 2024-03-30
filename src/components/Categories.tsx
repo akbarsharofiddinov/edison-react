@@ -29,7 +29,12 @@ export default function Categories() {
   const navigate = useNavigate();
   return (
     <div className="container">
-      <Swiper slidesPerView={"auto"} freeMode={true} className="categorySwiper" spaceBetween={10}>
+      <Swiper
+        slidesPerView={"auto"}
+        freeMode={true}
+        className="categorySwiper"
+        spaceBetween={10}
+      >
         {categories.map((category, index) => (
           <SwiperSlide key={`${category.name}-${index}`}>
             <Link

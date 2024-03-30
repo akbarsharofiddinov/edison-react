@@ -1,7 +1,7 @@
 import { useEdisonContext } from "@/context/EdisonContext";
 
 function Footer() {
-  const { openCart, products, cartProducts } = useEdisonContext();
+  const { openCart, totalSumm } = useEdisonContext();
 
   return (
     <footer className="footer" id="footer">
@@ -10,13 +10,7 @@ function Footer() {
           <div className="totalPrice">
             <h1>Общая сумма</h1>
             <p style={{ display: "flex", gap: 5 }}>
-              {cartProducts.reduce((total, cartItem) => {
-                const item = products?.find((i) => i.id === cartItem.id);
-                return (
-                  total +
-                  (Number.parseInt(item?.price!) || 0) * cartItem.quantity
-                );
-              }, 0)}
+              {totalSumm}
               <span>сум</span>
             </p>
           </div>

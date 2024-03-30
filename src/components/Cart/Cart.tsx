@@ -59,6 +59,8 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
     getDeliveryCost();
   }, []);
 
+  console.log(cartProducts, products);
+
   return (
     <>
       <section className={isOpen ? "form-section active" : "form-section"}>

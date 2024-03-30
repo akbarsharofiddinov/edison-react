@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
 import { baseURL } from "@/API";
 import { useEdisonContext } from "@/context/EdisonContext";
@@ -7,6 +7,7 @@ import { useMyParams } from "@/hooks/useMyParams";
 import { PulseLoader } from "react-spinners";
 
 const Products: React.FC = () => {
+  const [currProducts, setCurrProducts] = useState<IProduct[]>([]);
   const { products, setProduct } = useEdisonContext();
   const params = useMyParams();
 
@@ -17,12 +18,13 @@ const Products: React.FC = () => {
           `${baseURL}/api/products?category_id=${params}`
         );
         if (response.status === 200) {
-          setProduct(response.data.data);
+          setCurrProducts(response.data.data);
         }
       } else {
         const response = await axios.get(`${baseURL}/api/products`);
         if (response.status === 200) {
           setProduct(response.data.data);
+          setCurrProducts(response.data.data);
         }
       }
     } catch (error) {
@@ -40,7 +42,7 @@ const Products: React.FC = () => {
         <section className="section-products">
           <div className="container">
             <div className="foods">
-              {products.map((item, index) => (
+              {currProducts.map((item, index) => (
                 <ProductItem key={`${item.name}-${index}`} productData={item} />
               ))}
             </div>

@@ -2,7 +2,7 @@ import { useEdisonContext } from "@/context/EdisonContext";
 import logoImg from "../images/logo.png";
 
 function Header() {
-  const { toggleModal } = useEdisonContext();
+  const {} = useEdisonContext();
 
   return (
     <header className="header">

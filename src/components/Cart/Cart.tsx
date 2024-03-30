@@ -116,7 +116,7 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
                 </div>
               )}
             </div>
-            <div className="paymentOrder">
+            <div className="paymentOrder" style={{padding: "0 10px"}}>
               <p>
                 <span>Сумма товара</span> <span>{totalSumm} сум</span>
               </p>

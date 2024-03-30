@@ -145,6 +145,8 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
                     required
                     onChange={(e) => {
                       setAddress(e.target.value);
+                    }}
+                    onFocus={() => {
                       window.scrollTo(0, document.body.scrollHeight);
                     }}
                     disabled={cartProducts.length <= 0 ? true : false}
@@ -161,6 +163,8 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
                     required
                     onChange={(e) => {
                       setComment(e.target.value);
+                    }}
+                    onFocus={() => {
                       window.scrollTo(0, document.body.scrollHeight);
                     }}
                     disabled={cartProducts.length <= 0 ? true : false}

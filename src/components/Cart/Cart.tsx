@@ -143,7 +143,10 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
                     autoComplete="off"
                     value={address}
                     required
-                    onChange={(e) => setAddress(e.target.value)}
+                    onChange={(e) => {
+                      setAddress(e.target.value);
+                      window.scrollTo(0, document.body.scrollHeight);
+                    }}
                     disabled={cartProducts.length <= 0 ? true : false}
                   />
                 </div>
@@ -156,7 +159,10 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
                     autoComplete="off"
                     value={comment}
                     required
-                    onChange={(e) => setComment(e.target.value)}
+                    onChange={(e) => {
+                      setComment(e.target.value);
+                      window.scrollTo(0, document.body.scrollHeight);
+                    }}
                     disabled={cartProducts.length <= 0 ? true : false}
                   ></textarea>
                 </div>

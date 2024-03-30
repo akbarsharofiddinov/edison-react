@@ -51,7 +51,7 @@ function SearchInput() {
           autoComplete="off"
           value={inputVal}
           onChange={(e) => setInputVal(e.target.value)}
-          placeholder="Search..."
+          placeholder="поиск..."
         />
       </div>
     </div>

@@ -149,9 +149,10 @@
         background-color: #fff;
         box-shadow: 1px -5px 10px rgba(0, 0, 0, 0.1);
         padding: 10px 20px;
-        position: sticky;
+        position: fixed;
+        left: 0;
+        bottom: 0;
         width: 100%;
-        top: 100vh;
 
         &.inner {
           display: flex;

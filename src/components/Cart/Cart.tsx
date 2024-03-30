@@ -146,8 +146,10 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
                     onChange={(e) => {
                       setAddress(e.target.value);
                     }}
-                    onFocus={() => {
-                      window.scrollTo(0, document.body.scrollHeight);
+                    onClick={() => {
+                      setTimeout(() => {
+                        window.scrollTo(0, document.body.scrollHeight);
+                      }, 200);
                     }}
                     disabled={cartProducts.length <= 0 ? true : false}
                   />
@@ -164,8 +166,10 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
                     onChange={(e) => {
                       setComment(e.target.value);
                     }}
-                    onFocus={() => {
-                      window.scrollTo(0, document.body.scrollHeight);
+                    onClick={() => {
+                      setTimeout(() => {
+                        window.scrollTo(0, document.body.scrollHeight);
+                      }, 200);
                     }}
                     disabled={cartProducts.length <= 0 ? true : false}
                   ></textarea>

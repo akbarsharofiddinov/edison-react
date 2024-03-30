@@ -27,6 +27,7 @@ const Banner: React.FC = () => {
       <Swiper
         className="bannerSwiper"
         autoplay={{ delay: 3000 }}
+        loop={true}
         modules={[Autoplay]}
       >
         {banners.map((banner, index) => (

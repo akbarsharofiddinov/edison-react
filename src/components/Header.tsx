@@ -15,9 +15,9 @@ function Header() {
               <span>Restaurant Nukus</span>
             </div>
           </a>
-          <button className="feedbackBtn" onClick={toggleModal}>
+          {/* <button className="feedbackBtn" onClick={toggleModal}>
             Оставить отзыв
-          </button>
+          </button> */}
         </div>
       </div>
     </header>

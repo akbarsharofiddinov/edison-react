@@ -8,28 +8,26 @@ import { CiSearch } from "react-icons/ci";
 
 function SearchInput() {
   const [inputVal, setInputVal] = useState("");
-  const { setProduct } = useEdisonContext();
+  const { setCurrentProducts } = useEdisonContext();
   const quearyParam = useMyParams();
 
   const debounced = useDebounce(inputVal, 700);
 
-  console.log(debounced)
-
   async function searchedProducts() {
     try {
-      if (quearyParam) {
+      if (quearyParam?.length) {
         const response = await axios.get(
           `${baseURL}/api/products/?search=${debounced}&category_id=${quearyParam}`
         );
         if (response.status === 200) {
-          setProduct(response.data.data);
+          setCurrentProducts(response.data.data);
         }
       } else {
         const response = await axios.get(
           `${baseURL}/api/products/?search=${debounced}`
         );
         if (response.status === 200) {
-          setProduct(response.data.data);
+          setCurrentProducts(response.data.data);
         }
       }
     } catch (error) {
@@ -39,7 +37,7 @@ function SearchInput() {
 
   useEffect(() => {
     searchedProducts();
-  }, [debounced]);
+  }, [debounced, quearyParam]);
 
   return (
     <div className="container" style={{ paddingTop: 0 }}>

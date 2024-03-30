@@ -21,6 +21,8 @@ type EdisonContextType = {
   toggleModal: () => void;
   categoryId: number | null;
   handleSetCategoryId: (value: number) => void;
+  currProducts: IProduct[];
+  setCurrentProducts: (data: IProduct[]) => void;
 };
 
 // ============================================================
@@ -44,6 +46,7 @@ export function EdisonContextProvider({
   const [cartProducts, setCartProducts] = useState<CartProduct[]>([]);
   const [products, setProducts] = useState<IProduct[] | undefined>();
   const [totalSumm, setTotalSumm] = useState(0);
+  const [currProducts, setCurrProducts] = useState<IProduct[]>([]);
 
   const cartQuantity = cartProducts.reduce(
     (quantity, item) => item.quantity + quantity,
@@ -108,6 +111,10 @@ export function EdisonContextProvider({
     setCategoryId(value);
   }
 
+  function setCurrentProducts(data: IProduct[]) {
+    setCurrProducts([...data]);
+  }
+
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
   const toggleModal = () => setModal((prev) => !prev);
@@ -132,6 +139,8 @@ export function EdisonContextProvider({
           toggleModal,
           categoryId,
           handleSetCategoryId,
+          currProducts,
+          setCurrentProducts,
         }}
       >
         {children}

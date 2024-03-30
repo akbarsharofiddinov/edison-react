@@ -1,30 +1,29 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ProductItem from "./ProductItem";
 import { baseURL } from "@/API";
 import { useEdisonContext } from "@/context/EdisonContext";
 import { useMyParams } from "@/hooks/useMyParams";
-import { PulseLoader } from "react-spinners";
+import { PiSmileySad } from "react-icons/pi";
 
 const Products: React.FC = () => {
-  const [currProducts, setCurrProducts] = useState<IProduct[]>([]);
-  const { products, setProduct } = useEdisonContext();
+  const { setProduct, currProducts, setCurrentProducts } = useEdisonContext();
   const params = useMyParams();
 
   async function getProducts() {
     try {
-      if (params) {
+      if (params?.length > 0) {
         const response = await axios.get(
           `${baseURL}/api/products?category_id=${params}`
         );
         if (response.status === 200) {
-          setCurrProducts(response.data.data);
+          setCurrentProducts(response.data.data);
         }
       } else {
         const response = await axios.get(`${baseURL}/api/products`);
         if (response.status === 200) {
           setProduct(response.data.data);
-          setCurrProducts(response.data.data);
+          setCurrentProducts(response.data.data);
         }
       }
     } catch (error) {
@@ -36,7 +35,7 @@ const Products: React.FC = () => {
     getProducts();
   }, [params]);
 
-  if (products?.length) {
+  if (currProducts?.length) {
     return (
       <>
         <section className="section-products">
@@ -59,10 +58,19 @@ const Products: React.FC = () => {
             display: "flex",
             alignContent: "center",
             justifyContent: "center",
+            flexDirection: "column",
+            textAlign: "center",
             marginTop: 150,
+            fontSize: "50px",
+            color: "#999",
           }}
         >
-          <PulseLoader color="#fbc100" />
+          <div style={{
+            textAlign: "center"
+          }}>
+            <PiSmileySad />
+            <h1 style={{ fontSize: "30px" }}>Продукты не найдены</h1>
+          </div>
         </div>
       </section>
     );

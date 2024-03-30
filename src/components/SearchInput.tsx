@@ -13,6 +13,8 @@ function SearchInput() {
 
   const debounced = useDebounce(inputVal, 700);
 
+  console.log(debounced)
+
   async function searchedProducts() {
     try {
       if (quearyParam) {

@@ -22,7 +22,7 @@ export default function ProductItem({ productData }: ProductItemProps) {
         <div className="food-card_body">
           <div className="top">
             <h1 className="food-name">{productData.name}</h1>
-            <p className="food-price">{productData.price} сумм</p>
+            <p className="food-price">{productData.price} сум</p>
           </div>
           {quantity === 0 ? (
             <button

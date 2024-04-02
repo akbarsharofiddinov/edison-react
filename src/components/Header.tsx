@@ -2,10 +2,13 @@ import { useEdisonContext } from "@/context/EdisonContext";
 import logoImg from "../images/logo.png";
 
 function Header() {
-  const {} = useEdisonContext();
+  const { isOpen } = useEdisonContext();
 
   return (
-    <header className="header">
+    <header
+      className="header"
+      style={isOpen ? { zIndex: -1, display: "none" } : {}}
+    >
       <div className="container">
         <div className="header-inner">
           <a href="/" className="logo">

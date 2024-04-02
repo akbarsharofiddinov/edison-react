@@ -54,7 +54,7 @@ export default function Categories() {
               >
                 <IoIosClose />
               </span>
-              {category.name}-{category.id}
+              {category.name}
             </Link>
           </SwiperSlide>
         ))}

@@ -15,6 +15,8 @@ export default function ProductItem({ productData }: ProductItemProps) {
     setQuantity(getProductQuantity(productData.id));
   }, [getProductQuantity(productData.id)]);
 
+  const formatPrice = Intl.NumberFormat("en-US");
+
   return (
     <>
       <div className="food-card">
@@ -22,7 +24,12 @@ export default function ProductItem({ productData }: ProductItemProps) {
         <div className="food-card_body">
           <div className="top">
             <h1 className="food-name">{productData.name}</h1>
-            <p className="food-price">{productData.price} сум</p>
+            <p className="food-price">
+              {formatPrice
+                .format(Number.parseInt(productData.price))
+                .replace(",", " ")}{" "}
+              сум
+            </p>
           </div>
           {quantity === 0 ? (
             <button

@@ -39,6 +39,7 @@ export default function Categories() {
           <SwiperSlide key={`${category.name}-${index}`}>
             <Link
               to={`?q=${category.id}`}
+              onClick={() => console.log(category.id)}
               className={
                 category.id === queary
                   ? "category_item active"

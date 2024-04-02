@@ -11,7 +11,7 @@ function SearchInput() {
   const { setCurrentProducts } = useEdisonContext();
   const quearyParam = useMyParams();
 
-  const debounced = useDebounce(inputVal, 700);
+  const debounced = useDebounce(inputVal, 400);
 
   async function searchedProducts() {
     try {

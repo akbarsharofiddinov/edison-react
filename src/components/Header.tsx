@@ -14,7 +14,7 @@ function Header() {
           <a href="/" className="logo">
             <img src={logoImg} alt="edison-logo" />
             <div className="title-box">
-              <h1 id="title">Edison TEST</h1>
+              <h1 id="title">Edison</h1>
               <span>Restaurant Nukus</span>
             </div>
           </a>

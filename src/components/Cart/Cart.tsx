@@ -24,8 +24,8 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
   const [comment, setComment] = useState("");
   const [loading, setLoading] = useState(false);
 
-  let tg = Telegram.WebApp;
-  let chat_id = tg.initDataUnsafe.user?.id;
+  // let tg = Telegram.WebApp;
+  // let chat_id = tg.initDataUnsafe.user?.id;
 
   // Axios request
   async function getDeliveryCost() {

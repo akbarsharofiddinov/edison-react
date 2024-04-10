@@ -72,12 +72,6 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
       <section className={isOpen ? "form-section active" : "form-section"}>
         <div className="container">
           <div className="cart-inner">
-            <div
-              className="spinner-modal"
-              style={loading ? { display: "flex" } : { display: "none" }}
-            >
-              <PulseLoader color="#fff" speedMultiplier={0.6} />
-            </div>
             <div className="form-top">
               <span onClick={closeCart}>
                 <FaArrowLeft />
@@ -204,7 +198,11 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
                       type="submit"
                       disabled={cartProducts.length === 0 || loading}
                     >
-                      Оформить заказ
+                      {loading ? (
+                        <PulseLoader color="#fff" speedMultiplier={0.6} />
+                      ) : (
+                        "Оформить заказ"
+                      )}
                     </button>
                   </div>
                 </div>

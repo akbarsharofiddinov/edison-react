@@ -21,6 +21,7 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
 
   const [address, setAddress] = useState("");
   const [comment, setComment] = useState("");
+  const [loading, setLoading] = useState(false);
 
   let tg = Telegram.WebApp;
   let chat_id = tg.initDataUnsafe.user?.id;
@@ -38,6 +39,7 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
   }
 
   async function handleSubmit() {
+    setLoading(true);
     const dataObj: OrderDataObj = {
       chat_id: chat_id!,
       address,
@@ -48,6 +50,7 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
       const response = await axios.post(`${baseURL}/api/orders`, dataObj);
       if (response.status === 200) {
         tg.close();
+        setLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -185,7 +188,10 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
                         сум
                       </span>
                     </p>
-                    <button type="submit" disabled={cartProducts.length === 0}>
+                    <button
+                      type="submit"
+                      disabled={cartProducts.length === 0 || loading}
+                    >
                       Оформить заказ
                     </button>
                   </div>

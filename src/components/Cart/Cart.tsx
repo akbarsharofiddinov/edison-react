@@ -3,6 +3,7 @@ import { useEdisonContext } from "@/context/EdisonContext";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
+import { PulseLoader } from "react-spinners";
 
 type CartProps = {
   isOpen: boolean;
@@ -38,7 +39,7 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
     }
   }
 
-  async function handleSubmit() {
+  function handleSubmit() {
     setLoading(true);
     const dataObj: OrderDataObj = {
       chat_id: chat_id!,
@@ -46,15 +47,20 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
       comment,
       products: [...cartProducts],
     };
-    try {
-      const response = await axios.post(`${baseURL}/api/orders`, dataObj);
-      if (response.status === 200) {
-        tg.close();
+    setTimeout(async () => {
+      try {
+        // const response = await axios.post(`${baseURL}/api/orders`, dataObj);
+        // if (response.status === 200) {
+        //   tg.close();
+        //   setLoading(false);
+        // }
+        alert("test");
+      } catch (error) {
+        console.log(error);
+      } finally {
         setLoading(false);
       }
-    } catch (error) {
-      console.log(error);
-    }
+    }, 2000);
   }
 
   useEffect(() => {
@@ -66,6 +72,12 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
       <section className={isOpen ? "form-section active" : "form-section"}>
         <div className="container">
           <div className="cart-inner">
+            <div
+              className="spinner-modal"
+              style={loading ? { display: "flex" } : { display: "none" }}
+            >
+              <PulseLoader color="#fff" speedMultiplier={0.6} />
+            </div>
             <div className="form-top">
               <span onClick={closeCart}>
                 <FaArrowLeft />

@@ -27,6 +27,8 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
   let tg = Telegram.WebApp;
   let chat_id = tg.initDataUnsafe.user?.id;
 
+  const formatPrice = Intl.NumberFormat("en-US");
+
   // Axios request
   async function getDeliveryCost() {
     try {
@@ -107,7 +109,12 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
                             +
                           </button>
                         </div>
-                        <p>{findItem?.price}</p>
+                        <p>
+                          {formatPrice
+                            .format(Number.parseInt(findItem?.price + ""))
+                            .replace(",", " ")}{" "}
+                          сум
+                        </p>
                       </div>
                     </div>
                   );
@@ -126,11 +133,24 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
             </div>
             <div className="paymentOrder" style={{ padding: "0 10px" }}>
               <p>
-                <span>Сумма товара</span> <span>{totalSumm} сум</span>
+                <span>Сумма товара</span>{" "}
+                <span>
+                  {formatPrice
+                    .format(Number.parseInt(totalSumm + ""))
+                    .replace(",", " ")}{" "}
+                  сум
+                </span>
               </p>
               <p>
                 <span>Сумма доставки</span>{" "}
-                <span>{deliveryCost?.data.delivery_amount} сум</span>
+                <span>
+                  {formatPrice
+                    .format(
+                      Number.parseInt(deliveryCost?.data.delivery_amount + "")
+                    )
+                    .replace(",", " ")}{" "}
+                  сум
+                </span>
               </p>
             </div>
             <form
@@ -187,8 +207,17 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
                       <span>Общая сумма</span>
                       <span>
                         {cartProducts.length > 0
-                          ? totalSumm +
-                            Number.parseInt(deliveryCost?.data.delivery_amount!)
+                          ? formatPrice
+                              .format(
+                                Number.parseInt(
+                                  totalSumm +
+                                    Number.parseInt(
+                                      deliveryCost?.data.delivery_amount!
+                                    ) +
+                                    ""
+                                )
+                              )
+                              .replace(",", " ")
                           : 0}{" "}
                         сум
                       </span>

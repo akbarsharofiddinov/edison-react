@@ -187,7 +187,6 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
                     rows={5}
                     autoComplete="off"
                     value={comment}
-                    required
                     onChange={(e) => {
                       setComment(e.target.value);
                     }}
